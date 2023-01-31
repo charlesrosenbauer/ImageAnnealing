@@ -85,4 +85,21 @@ int main(int ac, char** av){
 		
 		SDL_FreeSurface(img);
 	}
+	SDL_Window* w = SDL_CreateWindow("Image Collapse",
+				SDL_WINDOWPOS_UNDEFINED,
+				SDL_WINDOWPOS_UNDEFINED,
+				512, 512, SDL_WINDOW_SHOWN);
+	SDL_Surface* screen = SDL_GetWindowSurface(w);
+	
+	
+	SDL_Event e;
+	int cont = 1;
+	while(cont){
+		while(SDL_PollEvent(&e)) if(e.type == SDL_QUIT) cont = 0;
+		
+		SDL_UpdateWindowSurface(w);
+		SDL_Delay(16);
+	}
+	SDL_Quit();
+	
 }
